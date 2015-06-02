@@ -1,6 +1,6 @@
 <h3>FormM-mvp</h3>
 
-<%= form_tag searches_path, method: "get" do %>
+<%= form_tag searches_path, method: "post" do %>
   <%= label_tag(:search, "Search for:") %>
   <%= text_field_tag :search, params[:search], :placeholder => "Search for username" %>
   <%= submit_tag("Search") %>

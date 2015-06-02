@@ -1,5 +1,3 @@
 <h1>menu</h1>
 
-<% for media in @instagram %>
-  <%= image_tag media.images.thumbnail.url %>
-<% end %>
+<%= image_tag @store.profile_picture %>

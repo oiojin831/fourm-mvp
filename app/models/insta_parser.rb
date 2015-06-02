@@ -9,10 +9,11 @@ class InstaParser
 
     for media in medias
       data = Hash.new()
-      data[:caption_text] = media[:caption][:text] if media[:caption]
-      data[:low_resolution] = media[:images][:low_resolution][:url]
-      data[:thumbnail] = media[:images][:thumbnail][:url]
-      data[:standard_resolution] = media[:images][:standard_resolution][:url]
+      images = media.images
+      data[:caption_text] = media.caption.text if media.caption
+      data[:low_resolution] = images.low_resolution.url
+      data[:thumbnail] = images.thumbnail.url
+      data[:standard_resolution] = images.standard_resolution.url
 
       @medias << data
     end
@@ -35,7 +36,6 @@ class InstaParser
   end
 
   def user_id
-    binding.pry
     current_user.id
   end
 
