@@ -10,13 +10,4 @@ class SearchesController < ApplicationController
 
     redirect_to searches_path
   end
-  private
-
-  def user_id
-    search_user[0].id
-  end
-
-  def search_user
-    Instagram.user_search(params[:search], count: 1)
-  end
 end
