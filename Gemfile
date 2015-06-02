@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
+
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -15,6 +16,8 @@ gem 'foundation-rails'
 gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
+gem 'instagram'
+
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
