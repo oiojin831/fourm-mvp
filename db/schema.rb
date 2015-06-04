@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602014914) do
+ActiveRecord::Schema.define(version: 20150604104100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "media", force: :cascade do |t|
+    t.integer  "store_id"
+    t.string   "caption_text"
+    t.string   "low_resolution"
+    t.string   "thumbnail"
+    t.string   "standard_resolution"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "media", ["store_id"], name: "index_media_on_store_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "username"

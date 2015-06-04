@@ -2,37 +2,42 @@ class InstaParser
 
   def initialize(username: )
     @username = username
-    @store = Hash.new()
-    @medias = Array.new()
+    @media = Array.new()
   end
 
-  def parse_medias
+  def parse_media
+    parse_images
+    parse_caption
+  end
 
-    for media in medias
-      data = Hash.new()
-      images = media.images
-      data[:caption_text] = media.caption.text if media.caption
-      data[:low_resolution] = images.low_resolution.url
-      data[:thumbnail] = images.thumbnail.url
-      data[:standard_resolution] = images.standard_resolution.url
-
-      @medias << data
+  def parse_caption
+    index = 0
+    media.each do |medium|
+      @media[index][:caption_text] = medium.caption.text if medium.caption
+      index += 1
     end
 
-    @medias
+    @media
+  end
+
+  def parse_images
+    media.each do |medium|
+      data = medium.to_hash.slice("images").deep_symbolize_keys
+      @media << data[:images]
+    end
+
+    @media
   end
 
   def parse_store
-    @store[:username] = current_user.username
-    @store[:insta_id] = current_user.id
-    @store[:profile_picture] = current_user.profile_picture
-
+    @store = current_user.to_hash.symbolize_keys.except(:full_name)
+    @store[:insta_id] = @store.delete :id
     @store
   end
 
   private
 
-  def medias
+  def media
     Instagram.user_recent_media(user_id, count: 30)
   end
 
