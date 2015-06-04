@@ -1,5 +1,5 @@
 <h1>menu</h1>
 
-<% for store in @store %>
-<%= image_tag store.profile_picture %>
+<% @store.each do |store| %>
+  <%= image_tag store.profile_picture %>
 <% end %>
