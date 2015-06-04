@@ -1,3 +1,5 @@
 <h1>menu</h1>
 
-<%= image_tag @store.profile_picture %>
+<% for store in @store %>
+<%= image_tag store.profile_picture %>
+<% end %>
