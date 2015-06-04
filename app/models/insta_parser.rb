@@ -1,4 +1,5 @@
 class InstaParser
+
   def initialize(username: )
     @username = username
     @store = Hash.new()
