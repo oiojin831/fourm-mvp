@@ -4,9 +4,3 @@
   <%= image_tag store.profile_picture %>
 <% end %>
 
-<% @media.each do |medium| %>
-  <p> <%= medium.caption_text %>
-  <%= image_tag medium.low_resolution %>
-  <%= image_tag medium.thumbnail %>
-  <%= image_tag medium.standard_resolution %>
-<% end %>

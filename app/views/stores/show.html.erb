@@ -1,0 +1,4 @@
+<% @media.each do |medium| %>
+  <p> <%= medium.caption_text %>
+  <%= image_tag medium.low_resolution %>
+<% end %>
