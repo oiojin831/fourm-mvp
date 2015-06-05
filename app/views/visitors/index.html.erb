@@ -1,4 +1,4 @@
-<h3>FormM-mvp</h3>
+<h3>FourM-mvp</h3>
 
 <%= form_tag searches_path, method: "post" do %>
   <%= label_tag(:search, "Search for:") %>
@@ -6,3 +6,6 @@
   <%= submit_tag("Search") %>
 <% end %>
 
+<% @store.each do |store| %>
+  <h1> * <%= link_to store.username, store %></h1> <br>
+<% end %>

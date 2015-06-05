@@ -6,11 +6,7 @@ class InstaWorker
   def save
     parse
 
-    store = Store.new do |s|
-      s.username = @store_info[:username]
-      s.insta_id = @store_info[:insta_id]
-      s.profile_picture = @store_info[:profile_picture]
-    end
+    store = new_store
 
     if store.save
       medium = Medium.new do |m|
@@ -38,5 +34,15 @@ class InstaWorker
     data = InstaParser.new(username: @username)
     @store_info = data.parse_store
     @media_info = data.parse_media[0]
+  end
+
+  def new_store
+    store = Store.new do |s|
+      s.username = @store_info[:username]
+      s.insta_id = @store_info[:insta_id]
+      s.profile_picture = @store_info[:profile_picture]
+    end
+
+    store
   end
 end
