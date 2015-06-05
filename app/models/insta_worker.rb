@@ -1,6 +1,6 @@
 class InstaWorker
-  def initialize(username: )
-    @username = username
+  def initialize(user_id: )
+    @user_id = user_id
   end
 
   def save
@@ -31,7 +31,7 @@ class InstaWorker
   private
 
   def parse
-    data = InstaParser.new(username: @username)
+    data = InstaParser.new(user_id: @user_id)
     @store_info = data.parse_store
     @media_info = data.parse_media[0]
   end

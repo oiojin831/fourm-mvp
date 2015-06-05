@@ -1,7 +1,7 @@
 class InstaParser
 
-  def initialize(username: )
-    @username = username
+  def initialize(user_id: )
+    @user_id = user_id
     @media = Array.new()
   end
 
@@ -42,11 +42,11 @@ class InstaParser
   end
 
   def user_id
-    current_user.id
+    @user_id
   end
 
   def current_user
-    Instagram.user_search(@username, count: 1)[0]
+    Instagram.user(user_id)
   end
 
 end
