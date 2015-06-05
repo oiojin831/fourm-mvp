@@ -6,9 +6,9 @@ class SearchesController < ApplicationController
   def create
     worker = InstaWorker.new(username: params[:search])
     if worker.save
-      redirect_to searches_path
+      redirect_to store_path(worker.store_id)
     else
-      redirect_to root_path
+      redirect_to store_path(Store.find_by(username: params[:search]))
     end
 
   end

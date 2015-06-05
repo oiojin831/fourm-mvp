@@ -21,10 +21,15 @@ class InstaWorker
         m.standard_resolution = @media_info[:standard_resolution][:url]
       end
 
+      @store_id = store.id
       medium.save
     else
       false
     end
+  end
+
+  def store_id
+    @store_id
   end
 
   private
