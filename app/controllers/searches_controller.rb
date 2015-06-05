@@ -24,10 +24,10 @@ class SearchesController < ApplicationController
         m.standard_resolution = media_info[:standard_resolution][:url]
       end
 
-    end
+      if medium.save
+        redirect_to searches_path
+      end
 
-    if medium.save
-      redirect_to searches_path
     else
       redirect_to searches_path
     end
