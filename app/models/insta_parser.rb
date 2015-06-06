@@ -20,14 +20,10 @@ class InstaParser
   end
 
   def parse_images
-    new_data = {}
-
     media.inject([]) do |media, medium|
       data = medium.to_hash.slice("images").deep_symbolize_keys
-      new_data[:low_resolution] = data[:images][:low_resolution][:url]
-      new_data[:thumbnail] = data[:images][:thumbnail][:url]
-      new_data[:standard_resolution] = data[:images][:standard_resolution][:url]
-      media << new_data
+      a = data.delete :images
+      media << a.transform_values { |x| x[:url] }
     end
   end
 
