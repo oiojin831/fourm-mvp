@@ -21,9 +21,8 @@ class InstaParser
 
   def parse_images
     media.inject([]) do |media, medium|
-      data = medium.to_hash.slice("images").deep_symbolize_keys
-      a = data.delete :images
-      media << a.transform_values { |x| x[:url] }
+      data = medium.to_hash.slice("images")["images"].deep_symbolize_keys
+      media << data.transform_values { |x| x[:url] }
     end
   end
 
