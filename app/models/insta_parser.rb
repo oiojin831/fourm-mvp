@@ -2,11 +2,10 @@ class InstaParser
 
   def initialize(user_id: )
     @user_id = user_id
-    @media = Array.new()
   end
 
   def parse_media
-    parse_images
+    @media = parse_images
     parse_caption
   end
 
@@ -22,15 +21,14 @@ class InstaParser
 
   def parse_images
     new_data = {}
-    media.each do |medium|
+
+    media.inject([]) do |media, medium|
       data = medium.to_hash.slice("images").deep_symbolize_keys
       new_data[:low_resolution] = data[:images][:low_resolution][:url]
       new_data[:thumbnail] = data[:images][:thumbnail][:url]
       new_data[:standard_resolution] = data[:images][:standard_resolution][:url]
-      @media << new_data
+      media << new_data
     end
-
-    @media
   end
 
   def parse_store
