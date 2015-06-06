@@ -12,9 +12,9 @@ class InstaWorker
       medium = Medium.new do |m|
         m.store_id = store.id
         m.caption_text = @media_info[:caption_text]
-        m.low_resolution = @media_info[:low_resolution][:url]
-        m.thumbnail = @media_info[:thumbnail][:url]
-        m.standard_resolution = @media_info[:standard_resolution][:url]
+        m.low_resolution = @media_info[:low_resolution]
+        m.thumbnail = @media_info[:thumbnail]
+        m.standard_resolution = @media_info[:standard_resolution]
       end
 
       @store_id = store.id
