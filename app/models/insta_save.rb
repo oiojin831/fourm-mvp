@@ -16,6 +16,8 @@ class InstaSave
 
   end
 
+  private
+
   def self.new_medium(medium, store)
     medium = Medium.new do |m|
       m.store_id = store.id
