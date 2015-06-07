@@ -9,10 +9,11 @@ class InstaWorker
     store = InstaSave.store(@store_info)
 
     if store.save
-      medium = InstaSave.media(@media_info, store)
-
       @store_id = store.id
-      medium.save
+
+      media = InstaSave.media(@media_info, store)
+
+      media.all?
     else
       false
     end
@@ -27,7 +28,7 @@ class InstaWorker
   def parse
     data = InstaParser.new(user_id: @user_id)
     @store_info = data.parse_store
-    @media_info = data.parse_media[0]
+    @media_info = data.parse_media
   end
 
 end

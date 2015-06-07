@@ -10,12 +10,19 @@ class InstaSave
   end
 
   def self.media(media_info, store)
+    media_info.inject([]) do |media, medium|
+      media << new_medium(medium, store).save
+    end
+
+  end
+
+  def self.new_medium(medium, store)
     medium = Medium.new do |m|
       m.store_id = store.id
-      m.caption_text = media_info[:caption_text]
-      m.low_resolution = media_info[:low_resolution]
-      m.thumbnail = media_info[:thumbnail]
-      m.standard_resolution = media_info[:standard_resolution]
+      m.caption_text = medium[:caption_text]
+      m.low_resolution = medium[:low_resolution]
+      m.thumbnail = medium[:thumbnail]
+      m.standard_resolution = medium[:standard_resolution]
     end
 
     medium
