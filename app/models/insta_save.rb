@@ -9,24 +9,35 @@ class InstaSave
     store
   end
 
-  def self.media(media_info, store)
+  def self.media_and_tag(media_info, store)
     media_info.inject([]) do |media, medium|
-      media << new_medium(medium, store).save
+      new_medium(medium, store)
     end
 
   end
 
   private
 
-  def self.new_medium(medium, store)
-    medium = Medium.new do |m|
+  def self.new_medium(medium_info, store)
+    medium = Medium.create do |m|
       m.store_id = store.id
-      m.caption_text = medium[:caption_text]
-      m.low_resolution = medium[:low_resolution]
-      m.thumbnail = medium[:thumbnail]
-      m.standard_resolution = medium[:standard_resolution]
+      m.caption_text = medium_info[:caption_text]
+      m.low_resolution = medium_info[:low_resolution]
+      m.thumbnail = medium_info[:thumbnail]
+      m.standard_resolution = medium_info[:standard_resolution]
     end
 
-    medium
+    new_tag(medium_info, medium)
+  end
+
+  def self.new_tag(caption_info, medium)
+    tag = Tag.create do |t|
+      t.medium_id = medium.id
+      t.price = caption_info[:price]
+      t.category = caption_info[:category]
+      t.name = caption_info[:name]
+    end
+
+    tag
   end
 end

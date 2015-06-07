@@ -11,9 +11,7 @@ class InstaWorker
     if store.save
       @store_id = store.id
 
-      media = InstaSave.media(@media_info, store)
-
-      media.all?
+      InstaSave.media_and_tag(@media_info, store)
     else
       false
     end
