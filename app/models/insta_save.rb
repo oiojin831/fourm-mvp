@@ -10,7 +10,6 @@ class InstaSave
   end
 
   def self.media(media_info, store)
-    binding.pry
     medium = Medium.new do |m|
       m.store_id = store.id
       m.caption_text = media_info[:caption_text]
