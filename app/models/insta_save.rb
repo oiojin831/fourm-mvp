@@ -26,7 +26,6 @@ class InstaSave
       m.thumbnail = medium_info[:thumbnail]
       m.standard_resolution = medium_info[:standard_resolution]
     end
-
     new_tag(medium_info, medium)
   end
 

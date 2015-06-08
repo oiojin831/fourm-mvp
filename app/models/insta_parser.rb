@@ -21,15 +21,14 @@ class InstaParser
   def parse_caption(medium)
     caption = {}
     if medium.caption
-      caption[:caption_text] = medium.caption.text 
-      caption.merge(parse_tag(caption[:caption_text]))
+      caption[:caption_text] = medium.caption.text
+      caption.merge!(parse_tag(caption[:caption_text]))
     end
     caption
   end
 
   def parse_tag(caption)
-    #{ price: caption.scan(/\$\d+\.*\d*/)[0], category: caption.scan(/##\S*/)[0], name: caption.scan(/\#!\S*/)[0] }
-    { price: caption.scan(/\$\d+\.*\d*/)[0], category: caption, name: caption.scan(/\#!\S*/)[0] }
+    { price: caption.scan(/\$\d+\.*\d*/)[0], category: caption.scan(/##\S*/)[0], name: caption.scan(/\#!\S*/)[0] }
   end
 
   def parse_images(medium)
