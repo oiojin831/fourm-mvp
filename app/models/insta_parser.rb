@@ -28,7 +28,7 @@ class InstaParser
   end
 
   def parse_tag(caption)
-    { price: caption.scan(/\$\d+\.*\d*/)[0], category: caption.scan(/##\S*/)[0], name: caption.scan(/\#!\S*/)[0] }
+    { price: caption.scan(/\$\d+\.*\d*/)[0].to_s.gsub!(/\W+/, ''), category: caption.scan(/##\S*/)[0].to_s.encode('utf-8', 'utf-8').gsub!(/\W+/, ''), name: caption.scan(/\!#\S*/)[0].to_s.encode('utf-8', 'utf-8').gsub!(/\W+/, '') }
   end
 
   def parse_images(medium)
