@@ -13,7 +13,6 @@ class InstaSave
     media_info.inject([]) do |media, medium|
       new_medium(medium, store)
     end
-
   end
 
   private
@@ -26,6 +25,7 @@ class InstaSave
       m.thumbnail = medium_info[:thumbnail]
       m.standard_resolution = medium_info[:standard_resolution]
     end
+
     new_tag(medium_info, medium)
   end
 
