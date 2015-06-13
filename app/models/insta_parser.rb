@@ -1,7 +1,8 @@
 class InstaParser
 
-  def initialize(user_id: )
+  def initialize(user_id: , token:)
     @user_id = user_id
+    @token = token
   end
 
   def parse_store
@@ -37,7 +38,7 @@ class InstaParser
   end
 
   def media
-    Instagram.user_recent_media(user_id, count: 30)
+    Instagram.user_recent_media(user_id, count: 30, access_token: @token)
   end
 
   def user_id
@@ -47,5 +48,5 @@ class InstaParser
   def current_user
     Instagram.user(user_id)
   end
-
 end
+
