@@ -19,6 +19,7 @@ gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
 gem 'instagram'
+gem 'omniauth-instagram'
 
 group :development do
   gem 'better_errors'

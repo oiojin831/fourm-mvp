@@ -1,6 +1,6 @@
  require 'instagram'
 
 Instagram.configure do |config|
-  config.client_id = '22546f8d63a2460a824072ed06ce40c1'
-  config.access_token = '1375609880.22546f8.ac7f602527304c8e88ed34051b35bfe8'
+  config.client_id = '87bff065f91b482e89de8e4d4236b888'
+  config.access_token = '58ce4086f3e44ca380c7425448a2a7fe'
 end
