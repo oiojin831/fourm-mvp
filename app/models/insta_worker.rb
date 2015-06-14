@@ -1,8 +1,7 @@
 class InstaWorker
-  def initialize(user_info: )
+  def initialize(user_info:, media_info:)
     @user_info = user_info
-    @user_id = @user_info.uid.to_i
-    @token = user_info.credentials.token
+    @media_info = media_info
   end
 
   def save
@@ -13,7 +12,7 @@ class InstaWorker
     if store.save
       @store_id = store.id
 
-      InstaSave.media_and_tag(@media_info, store)
+      InstaSave.media_and_tag(@parse_media_info, store)
     else
       false
     end
@@ -26,8 +25,8 @@ class InstaWorker
   private
 
   def parse
-    data = InstaParser.new(user_id: @user_id, token: @token)
-    @media_info = data.parse_media
+    data = InstaParser.new(user_info: @user_info, media_info: @media_info)
+    @parse_media_info = data.parse_media
   end
 
 end
