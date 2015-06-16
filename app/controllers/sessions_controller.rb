@@ -31,14 +31,13 @@ class SessionsController < ApplicationController
       user_info = response.user
       session[:access_token] = response.access_token
       media_info = Instagram.client(access_token: session[:access_token]).user_recent_media
-      binding.pry
       # create store
       worker = InstaWorker.new(user_info: user_info, media_info: media_info)
 
       if worker.save
         redirect_to store_path(worker.store_id)
       else
-        redirect_to store_path(Store.find_by(username: params[:search]))
+        redirect_to store_path(Store.find_by(insta_id: user_info.id))
       end
     end
   end
