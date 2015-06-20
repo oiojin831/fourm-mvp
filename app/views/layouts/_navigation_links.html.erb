@@ -1,2 +1,7 @@
 <%# add navigation links to this file %>
 <li><%= link_to 'About', page_path('about') %></li>
+<% if session[:access_token] %>
+  <li><%= link_to 'Already Login, go Log Out', '/session/disconnect' %><li>
+<% else %>
+  <li><%= link_to 'Instagram', '/session/connect' %></li>
+<% end %>

@@ -2,7 +2,7 @@ class InstaSave
   def self.store(store_info)
     store = Store.new do |s|
       s.username = store_info[:username]
-      s.insta_id = store_info[:insta_id]
+      s.insta_id = store_info[:id]
       s.profile_picture = store_info[:profile_picture]
     end
 

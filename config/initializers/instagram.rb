@@ -1,6 +1,8 @@
  require 'instagram'
 
 Instagram.configure do |config|
-  config.client_id = '22546f8d63a2460a824072ed06ce40c1'
-  config.access_token = '1375609880.22546f8.ac7f602527304c8e88ed34051b35bfe8'
+  config.client_id = '9d430c15986b4ac7875d24f9cf461118'
+  config.client_secret = 'ffad94a34b044cabae32fb2adb3e323c'
 end
+
+CALLBACK_URL = "http://52.68.126.138:8000/session/callback"
