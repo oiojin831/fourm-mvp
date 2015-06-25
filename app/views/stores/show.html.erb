@@ -1,5 +1,11 @@
 <% @media.each do |medium| %>
-  <%= image_tag medium.low_resolution %>
-  <h4> <%= medium.tag.category.to_s.capitalize %>:  <%= medium.tag.name %> </h4>
-  <h5> Price: $<%= medium.tag.price %> </h5>
+  <div class='box'>
+    <div class='content'>
+      <%= image_tag medium.standard_resolution %>
+    </div>
+    <div class='info'>
+      <span class='price'> $<%= medium.tag.price %>
+      <span class='name'> <%= medium.tag.name %>
+    </div>
+  </div>
 <% end %>

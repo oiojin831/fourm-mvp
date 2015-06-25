@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+.box {
+  width: 640px;
+  //height: 350px;
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.box > .content {
+}
+
+.box > .content > img {
+}
+
+.box > .content > .info {
+}
+
+.box > .content > .info > .price {
+  font-size: 21px;
+  display: inline;
+}
+
+.box > .content > .info > .name {
+  font-size: 13px;
+  display: inline;
+}
+
